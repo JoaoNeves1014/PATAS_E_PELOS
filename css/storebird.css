@@ -74,14 +74,14 @@ body{
 .banner {
     align-items: center;
     justify-content: center;
-    padding-left: 270px;
+    padding-left: 200px;
     margin-top: 40px;
     margin-bottom: 0;
     
 }
 
 .banner img {
-
+    height: 600px;
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
@@ -157,4 +157,63 @@ body{
 
 .btn:hover {
     transform: scale(0.9);
+}
+
+.footer {
+    background-color: #4cbbbb;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .top-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .logo {
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-container {
+        max-width: 100%;
+    }
+
+    .auth-buttons {
+        justify-content: center;
+    }
+
+    .navlinks {
+        gap: 12px;
+    }
+
+    .navlinks a {
+        font-size: 14px;
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 12px;
+    }
+
+    .card {
+        padding: 12px;
+    }
+
+    .card h2 {
+        font-size: 13px;
+    }
+
+    .price {
+        font-size: 16px;
+    }
+
+    .btn-buy {
+        padding: 10px;
+        font-size: 13px;
+    }
 }
