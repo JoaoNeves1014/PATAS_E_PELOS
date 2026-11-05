@@ -1,29 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Patas &amp; Pelos | Pet Shop Online</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<!-- INICIO DO MENU !-->
-<header class="navbar">
+<body>
 
+    <header class="topo">
+        <div class="topo-linha">
 
-    <div class="menu">
-        
-        <div class="search-container">
-            <input type="text" placeholder="Pesquisar...">
-            <button type="submit">Buscar</button>
+            <div class="logo">
+                <a href="../html/index.html">
+                    <img src="../img/logo.png" alt="Patas &amp; Pelos - Pet Shop Online">
+                </a>
+            </div>
+
+            <form class="search-container" id="form-busca" role="search">
+                <input type="search" id="campo-busca" placeholder="Pesquisar..." aria-label="Pesquisar produtos">
+                <button type="submit" id="btn-buscar">Buscar</button>
+            </form>
+
+            <div class="auth-buttons">
+                <a href="../html/login.html" class="btn-login">Login</a>
+                <a href="../html/cadastro.html" class="btn-register">Cadastrar</a>
+            </div>
+
+            <div class="auth-buttons">
+                <button type="button" id="btn-carrinho" class="btn-carrinho">Carrinho (0)</button>
+                <a href="../html/login.html" class="btn-login">Login</a>
+                <a href="../html/cadastro.html" class="btn-register">Cadastrar</a>
+            </div>
+
         </div>
-        <div class="logo">
-            <img src="../img/logo.png" alt="Logo">
-        </div>
-        <div class="auth-buttons">
-            <a href="../html/login.html" class="btn-login">Login</a>
-            <a href="../html/cadastro.html" class="btn-register">Cadastrar</a>
-        </div>
-        <nav>
+
+        <nav class="nav-categorias" aria-label="Categorias">
             <ul class="navlinks">
                 <li><a href="../html/storedog.html">Cachorro</a></li>
                 <li><a href="../html/storecat.html">Gato</a></li>
@@ -32,97 +49,83 @@
                 <li><a href="../html/storefish.html">Peixes</a></li>
             </ul>
         </nav>
-    </div>
-</header>
-<!-- FIM DO MENU -->
-<body>
+    </header>
 
-    <!-- INICIO HOME-->
+
     <main>
-        <div class="banner">
-            <img src="../img/banner1.jpg" alt="banner1">
-        </div>
+
+        <section class="banner" id="banner">
+            <img src="../img/banner1.jpg" alt="Kit Diversão &amp; Sabor: ração super premium com 30% off e brinquedos">
+        </section>
+
+        <section class="produtos" id="produtos" aria-label="Produtos">
+
+  
+            <article class="card" data-id="1" data-categoria="cachorro" data-preco="189.99">
+                <img src="../img/Golden Formula Cães Adultos.png" alt="Ração Golden Formula Cães Adultos 15kg">
+                <h2>Golden Formula Cães Adultos 15kg</h2>
+                <p class="preco">R$ 189,99</p>
+                <button class="btn" type="button">Comprar</button>
+            </article>
+
+            <article class="card" data-id="2" data-categoria="cachorro" data-preco="135.00">
+                <img src="../img/Pedigree Adulto Carne e Vegetais.png" alt="Ração Pedigree Adulto Carne e Vegetais 7kg">
+                <h2>Pedigree Adulto Carne e Vegetais 7kg</h2>
+                <p class="preco">R$ 135,00</p>
+                <button class="btn" type="button">Comprar</button>
+            </article>
+
+            <article class="card" data-id="3" data-categoria="cachorro" data-preco="280.00">
+                <img src="../img/Premier Pet Fórmula Cães Adultos.png" alt="Ração Premier Pet Fórmula Cães Adultos 15kg">
+                <h2>Premier Pet Fórmula Cães Adultos 15kg</h2>
+                <p class="preco">R$ 280,00</p>
+                <button class="btn" type="button">Comprar</button>
+            </article>
+
+            <article class="card" data-id="4" data-categoria="cachorro" data-preco="430.00">
+                <img src="../img/racao-royal-canin-medium-adult-7-mais-caes-adultos-1-removebg-preview.png" alt="Ração Royal Canin Medium Adult 12kg">
+                <h2>Ração Royal Canin Medium Adult 12kg</h2>
+                <p class="preco">R$ 430,00</p>
+                <button class="btn" type="button">Comprar</button>
+            </article>
+
+
+            <article class="card" data-id="5" data-categoria="gato" data-preco="170.00">
+                <img src="../img/Golden Gatos.png" alt="Ração Golden Gatos Castrados 10kg">
+                <h2>Golden Gatos Castrados 10kg</h2>
+                <p class="preco">R$ 170,00</p>
+                <button class="btn" type="button">Comprar</button>
+            </article>
+
+            <article class="card" data-id="6" data-categoria="gato" data-preco="210.00">
+                <img src="../img/Premier Pet Gatos Castrados.png" alt="Ração Premier Pet Gatos Castrados 7,5kg">
+                <h2>Premier Pet Gatos Castrados 7,5kg</h2>
+                <p class="preco">R$ 210,00</p>
+                <button class="btn" type="button">Comprar</button>
+            </article>
+
+            <article class="card" data-id="7" data-categoria="gato" data-preco="420.00">
+                <img src="../img/Royal Canin Feline Fit 32.png" alt="Ração Royal Canin Feline Fit 32 7,5kg">
+                <h2>Royal Canin Feline Fit 32 7,5kg</h2>
+                <p class="preco">R$ 420,00</p>
+                <button class="btn" type="button">Comprar</button>
+            </article>
+
+            <article class="card" data-id="8" data-categoria="gato" data-preco="185.00">
+                <img src="../img/Whiskas Adultos.png" alt="Ração Whiskas Adultos 10,1kg">
+                <h2>Whiskas Adultos 10,1kg</h2>
+                <p class="preco">R$ 185,00</p>
+                <button class="btn" type="button">Comprar</button>
+            </article>
+
+        </section>
+
+        <script src="../js/script.js"></script>
+
     </main>
-    <div class="card-dog">
-    <div class="card">
-        <img src="../img/Golden Formula Cães Adultos.png" alt="ração1">
-        <h2>RGolden Formula Cães Adultos 15kg</h2>
-        <br>
-        <h3>R$ 189,99</h3>
-        <br>
-        <div class="btnn"><button class="btn">Comprar</button></div>
-    </div>
 
-    <div class="card">
-        <img src="../img/Pedigree Adulto Carne e Vegetais.png" alt="ração1">
-        <h2>Pedigree Adulto Carne e Vegetais 7kg</h2>
-        <br>
-        <h3>R$ 135,00</h3>
-        <br>
-        <div class="btnn"><button class="btn">Comprar</button></div>
-    </div>
+    <footer class="footer">
+        <p>&copy; 2026 Todos os direitos reservados. Patas &amp; Pelos Petshop.</p>
+    </footer>
 
-    <div class="card">
-        <img src="../img/Premier Pet Fórmula Cães Adultos.png" alt="ração1">
-        <h2>Premier Pet Fórmula Cães Adultos 15kg</h2>
-        <br>
-        <h3>R$ 280,00</h3>
-        <br>
-        <div class="btnn"><button class="btn">Comprar</button></div>
-    </div>
-
-    <div class="card">
-        <img src="../img/racao-royal-canin-medium-adult-7-mais-caes-adultos-1-removebg-preview.png" alt="ração1">
-        <h2>Ração Royal Canin Medium Adult 12kg</h2>
-        <br>
-        <h3>R$ 430,00</h3>
-        <br>
-        <div class="btnn"><button class="btn">Comprar</button></div>
-    </div>
-    </div>
-
-    <div class="card-cat">
-        <div class="cardt">
-            <img src="../img/Golden Gatos.png" alt="ração1">
-            <h2>Golden Gatos Castrados 10kg</h2>
-            <br>
-            <h3>R$ 170,00</h3>
-            <br>
-            <div class="btnn"><button class="btn">Comprar</button></div>
-        </div>
-    
-        <div class="cardt">
-            <img src="../img/Premier Pet Gatos Castrados.png" alt="ração1">
-            <h2>Premier Pet Gatos Castrados 7,5kg</h2>
-            <br>
-            <h3>R$ 210,00</h3>
-            <br>
-            <div class="btnn"><button class="btn">Comprar</button></div>
-        </div>
-    
-        <div class="cardt">
-            <img src="../img/Royal Canin Feline Fit 32.png" alt="ração1">
-            <h2>Royal Canin Feline Fit 32 7,5kg</h2>
-            <br>
-            <h3>R$ 420,00</h3>
-            <br>
-            <div class="btnn"><button class="btn">Comprar</button></div>
-        </div>
-    
-        <div class="cardt">
-            <img src="../img/Whiskas Adultos.png" alt="ração1">
-            <h2>Whiskas Adultos
-                <br> 10,1kg</h2>
-            <br>
-            <h3>R$ 185,00</h3>
-            <br>
-            <div class="btnn"><button class="btn">Comprar</button></div>
-        </div>
-    </div>
-</div>
-
-<footer class="footer">
-    <p>&copy; 2026 Todos os direitos reservados. Petshop.</p>
-</footer>
-</body>
 </html>
