@@ -1,4 +1,4 @@
-/* ========== VARIÁVEIS ========== */
+
 :root {
     --cor-principal: #4cbbbb;
     --cor-escura: #067979;
@@ -7,7 +7,7 @@
     --largura-max: 1400px;
 }
 
-/* ========== RESET ========== */
+
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +19,6 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-/* Foco visível para quem navega pelo teclado */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible {
@@ -27,7 +26,6 @@ input:focus-visible {
     outline-offset: 2px;
 }
 
-/* ========== CABEÇALHO ========== */
 .topo {
     background-color: var(--cor-principal);
     padding-bottom: 8px;
@@ -43,7 +41,6 @@ input:focus-visible {
     padding: 16px 24px;
 }
 
-/* Logo (à esquerda) */
 .logo {
     justify-self: start;
 }
@@ -56,7 +53,7 @@ input:focus-visible {
     border-radius: 8px;
 }
 
-/* Busca (no centro) */
+
 .search-container {
     display: flex;
     align-items: center;
@@ -90,7 +87,7 @@ input:focus-visible {
     color: #ffffff;
 }
 
-/* Login / Cadastrar (à direita) */
+
 .auth-buttons {
     justify-self: end;
     display: flex;
@@ -112,7 +109,7 @@ input:focus-visible {
     text-shadow: 0 0 8px var(--cor-escura);
 }
 
-/* ========== MENU DE CATEGORIAS ========== */
+
 .navlinks {
     list-style: none;
     display: flex;
@@ -134,7 +131,7 @@ input:focus-visible {
 
 .navlinks a:hover {
     color: var(--cor-escura);
-    border-bottom-color: var(--cor-escura);
+
 }
 
 /* ========== BANNER ========== */

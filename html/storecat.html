@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/storecat.css">
 </head>
 <body>
+    <button type="button" id="btnCarrinho" class="btn-carrinho">🛒 <span id="contadorCarrinho">0</span></button>
     <header class="navbar">
         <div class="logo">
         </div>
@@ -14,8 +15,8 @@
         <div class="menu">
     
             <div class="search-container">
-                <input type="text" placeholder="Pesquisar...">
-                <button type="submit">Buscar</button>
+                <input type="text" id="busca" placeholder="Pesquisar...">
+                <button type="button" id="btnBuscar">Buscar</button>
             </div>
             
             <nav>
@@ -183,6 +184,45 @@
                             <h3>R$ 28,00</h3>
                             <br>
                             <div class="btnn"><button class="btn">Comprar</button></div>
+
+                            <div class="overlay" id="modalProduto" hidden>
+                                <div class="produto-modal" role="dialog" aria-modal="true">
+                                    <button class="fechar" id="fecharModal" aria-label="Fechar">✕</button>
+                                    <div class="modal-img"><img id="modalImg" src="" alt=""></div>
+                                    <div class="modal-info">
+                                        <h2 id="modalNome"></h2>
+                                        <p class="modal-preco" id="modalPreco"></p>
+                                        <h4>Descrição</h4>
+                                        <p id="modalDesc"></p>
+                                        <h4>Especificações</h4>
+                                        <p class="modal-specs" id="modalSpecs"></p>
+                                        <div class="qtd">
+                                            <button type="button" id="menos">−</button>
+                                            <span id="qtdModal">1</span>
+                                            <button type="button" id="mais">+</button>
+                                        </div>
+                                        <button class="btn-add" id="btnAdicionar">Adicionar ao Carrinho</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="overlay" id="overlayCarrinho" hidden></div>
+                            <aside class="carrinho" id="carrinho" aria-hidden="true">
+                                <div class="carrinho-topo">
+                                    <h2>Seu carrinho</h2>
+                                    <button class="fechar" id="fecharCarrinho" aria-label="Fechar carrinho">✕</button>
+                                </div>
+                                <ul id="listaCarrinho"></ul>
+                                <div class="carrinho-rodape">
+                                    <p>Total: <strong id="totalCarrinho">R$ 0,00</strong></p>
+                                    <button class="btn-add" id="btnFinalizar">Finalizar compra</button>
+                                </div>
+                            </aside>
+                            
+                            <div class="toast" id="toast" role="status"></div>
+                            
+                            <script src="../js/storecat.js"></script>
+
                         </div>
                         </div>
                         <footer class="footer">
