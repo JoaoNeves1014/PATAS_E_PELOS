@@ -134,7 +134,7 @@ input:focus-visible {
 
 }
 
-/* ========== BANNER ========== */
+
 .banner {
     max-width: var(--largura-max);
     margin: 40px auto 0;
@@ -149,7 +149,7 @@ input:focus-visible {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* ========== PRODUTOS ========== */
+
 .produtos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -191,7 +191,7 @@ input:focus-visible {
 }
 
 .btn {
-    margin-top: auto; /* mantém todos os botões alinhados na base dos cards */
+    margin-top: auto;
     width: 100%;
     padding: 18px;
     background-color: var(--cor-principal);
@@ -210,7 +210,7 @@ input:focus-visible {
     transform: scale(0.96);
 }
 
-/* ========== RODAPÉ ========== */
+
 .footer {
     background-color: var(--cor-principal);
     color: #ffffff;
@@ -245,7 +245,7 @@ input:focus-visible {
     align-items: center;
 }
 
-/* ========== RESPONSIVO ========== */
+
 @media (max-width: 768px) {
     .topo-linha {
         grid-template-columns: 1fr;
