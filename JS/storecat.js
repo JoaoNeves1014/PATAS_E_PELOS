@@ -1,4 +1,3 @@
-// ===== ELEMENTOS =====
 const cards = document.querySelectorAll('.card');
 const modal = document.getElementById('modalProduto');
 const carrinhoEl = document.getElementById('carrinho');
@@ -35,20 +34,23 @@ function salvarCarrinho() {
 // ===== MODAL DO PRODUTO =====
 function abrirModal(card) {
   const d = card.dataset;
+  const nome = card.querySelector('h2').textContent;
+  const img = card.querySelector('img').getAttribute('src');
+
   produtoAtual = {
     id: d.id,
-    nome: d.nome,
+    nome: nome,
     preco: parseFloat(d.preco),
-    img: d.img
+    img: img
   };
   quantidade = 1;
 
-  document.getElementById('modalImg').src = d.img;
-  document.getElementById('modalImg').alt = d.nome;
-  document.getElementById('modalNome').textContent = d.nome;
+  document.getElementById('modalImg').src = img;
+  document.getElementById('modalImg').alt = nome;
+  document.getElementById('modalNome').textContent = nome;
   document.getElementById('modalPreco').textContent = formatarPreco(produtoAtual.preco);
-  document.getElementById('modalDesc').textContent = d.desc;
-  document.getElementById('modalSpecs').textContent = d.specs;
+  document.getElementById('modalDesc').textContent = d.desc || 'Produto de qualidade para o seu pet.';
+  document.getElementById('modalSpecs').textContent = d.specs || ('Categoria: ' + d.categoria);
   document.getElementById('qtdModal').textContent = quantidade;
 
   modal.hidden = false;
@@ -61,7 +63,7 @@ function fecharModal() {
 }
 
 cards.forEach(card => {
-  card.querySelector('.btn-comprar').addEventListener('click', () => abrirModal(card));
+  card.querySelector('.btn').addEventListener('click', () => abrirModal(card));
 });
 
 document.getElementById('fecharModal').addEventListener('click', fecharModal);
@@ -160,7 +162,8 @@ function buscar() {
   let achou = false;
 
   cards.forEach(card => {
-    const combina = card.dataset.nome.toLowerCase().includes(termo);
+    const nome = card.querySelector('h2').textContent.toLowerCase();
+    const combina = nome.includes(termo);
     card.style.display = combina ? '' : 'none';
     if (combina) achou = true;
   });
