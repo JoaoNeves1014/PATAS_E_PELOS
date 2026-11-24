@@ -8,31 +8,43 @@
 </head>
 <body>
     <button type="button" id="btnCarrinho" class="btn-carrinho">🛒 <span id="contadorCarrinho">0</span></button>
-    <header class="navbar">
-        <div class="logo">
-        </div>
-    
-        <div class="menu">
-    
-            <div class="search-container">
-                <input type="text" id="busca" placeholder="Pesquisar...">
-                <button type="button" id="btnBuscar">Buscar</button>
+    <header class="topo">
+        <div class="topo-linha">
+
+            <div class="logo">
+                <a href="../html/index.html">
+                    <img src="../img/logo.png" alt="Patas &amp; Pelos - Pet Shop Online">
+                </a>
             </div>
-            
-            <nav>
-                <ul class="navlinks">
-                    <li><a href="../html/index.html">Home</a></li>
-                    <li><a href="../html/storedog.html">Cachorro</a></li>
-                    <li><a href="../html/storebird.html">Passarinhos e Aves</a></li>
-                    <li><a href="../html/storerat.html">Roedores</a></li>
-                    <li><a href="../html/storefish.html">Peixes</a></li>
-                </ul>
-            </nav>
+
+            <form class="search-container" id="form-busca" role="search">
+                <input type="search" id="campo-busca" placeholder="Pesquisar..." aria-label="Pesquisar produtos">
+                <button type="submit" id="btn-buscar">Buscar</button>
+            </form>
+
+       
+            <div class="auth-buttons">
+                <button type="button" id="btn-carrinho" class="btn-carrinho">Carrinho (0)</button>
+                <a href="../html/login.html" class="btn-login">Login</a>
+                <a href="../html/cadastro.html" class="btn-register">Cadastrar</a>
+            </div>
+
         </div>
+
+        <nav class="nav-categorias" aria-label="Categorias">
+            <ul class="navlinks">
+                <li><a href="../html/index.html">Home</a></li>
+                <li><a href="../html/storedog.html">Cachorro</a></li>
+                <li><a href="../html/storebird.html">Passarinhos e Aves</a></li>
+                <li><a href="../html/storerat.html">Roedores</a></li>
+                <li><a href="../html/storefish.html">Peixes</a></li>
+            </ul>
+        </nav>
     </header>
-    <div class="banner">
-        <img src="../img/bannercat.jpg" alt="banner">
-    </div>
+
+        <section class="banner" id="banner">
+            <img src="../img/bannercat.jpg" alt="Kit Diversão &amp; Sabor: ração super premium com 30% off e brinquedos">
+        </section>
     <section class="produtos" id="produtos" aria-label="Produtos">
         <!-- RAÇÕES -->
         <article class="card" data-id="1" data-categoria="racao" data-preco="170.00" data-desc="Ração premium da linha Golden para manter a saúde do seu felino castrado em dia." data-specs="Peso: 10kg&#10;Categoria: Ração">

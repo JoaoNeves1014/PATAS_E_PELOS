@@ -7,31 +7,47 @@
     <link rel="stylesheet" href="../css/storedog.css">
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo">
-        </div>
-    
-        <div class="menu">
-    
-            <div class="search-container">
-                <input type="text" placeholder="Pesquisar...">
-                <button type="submit">Buscar</button>
+    <header class="topo">
+        <div class="topo-linha">
+
+            <div class="logo">
+                <a href="../html/index.html">
+                    <img src="../img/logo.png" alt="Patas &amp; Pelos - Pet Shop Online">
+                </a>
             </div>
-    
-            <nav>
-                <ul class="navlinks">
-                    <li><a href="../html/index.html">Home</a></li>
-                    <li><a href="../html/storecat.html">Gato</a></li>
-                    <li><a href="../html/storebird.html">Passarinhos e Aves</a></li>
-                    <li><a href="../html/storerat.html">Roedores</a></li>
-                    <li><a href="../html/storefish.html">Peixes</a></li>
-                </ul>
-            </nav>
+
+            <form class="search-container" id="form-busca" role="search">
+                <input type="search" id="campo-busca" placeholder="Pesquisar..." aria-label="Pesquisar produtos">
+                <button type="submit" id="btn-buscar">Buscar</button>
+            </form>
+
+       
+            <div class="auth-buttons">
+                <button type="button" id="btn-carrinho" class="btn-carrinho">Carrinho (0)</button>
+                <a href="../html/login.html" class="btn-login">Login</a>
+                <a href="../html/cadastro.html" class="btn-register">Cadastrar</a>
+            </div>
+
         </div>
+
+        <nav class="nav-categorias" aria-label="Categorias">
+            <ul class="navlinks">
+                <li><a href="../html/index.html">Home</a></li>
+                <li><a href="../html/storecat.html">Gato</a></li>
+                <li><a href="../html/storebird.html">Passarinhos e Aves</a></li>
+                <li><a href="../html/storerat.html">Roedores</a></li>
+                <li><a href="../html/storefish.html">Peixes</a></li>
+            </ul>
+        </nav>
     </header>
-    <div class="banner">
-        <img src="../img/BannerDog.jpg" alt="banner">
-    </div>
+
+
+    <main>
+
+        <section class="banner" id="banner">
+            <img src="../img/BannerDog.jpg" alt="Kit Diversão &amp; Sabor: ração super premium com 30% off e brinquedos">
+        </section>
+
     
     <section class="produtos" id="produtos" aria-label="Produtos">
 
@@ -149,6 +165,48 @@
                 <button class="btn" type="button">Comprar</button>
             </article>
         </section>
+
+        <p id="semResultado" hidden>Nenhum produto encontrado.</p>
+        
+            <!-- MODAL DO PRODUTO -->
+            <div class="overlay" id="modalProduto" hidden>
+                <div class="produto-modal" role="dialog" aria-modal="true">
+                    <button class="fechar" id="fecharModal" type="button" aria-label="Fechar">✕</button>
+                    <div class="modal-img"><img id="modalImg" src="" alt=""></div>
+                    <div class="modal-info">
+                        <h2 id="modalNome"></h2>
+                        <p class="modal-preco" id="modalPreco"></p>
+                        <h4>Descrição</h4>
+                        <p id="modalDesc"></p>
+                        <h4>Detalhes</h4>
+                        <pre class="modal-specs" id="modalSpecs"></pre>
+                        <div class="qtd">
+                            <button id="menos" type="button">−</button>
+                            <span id="qtdModal">1</span>
+                            <button id="mais" type="button">+</button>
+                        </div>
+                        <button class="btn-add" id="btnAdicionar" type="button">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- CARRINHO -->
+            <div class="overlay" id="overlayCarrinho" hidden></div>
+            <aside class="carrinho" id="carrinho" aria-hidden="true">
+                <div class="carrinho-topo">
+                    <h3>Seu carrinho</h3>
+                    <button class="fechar" id="fecharCarrinho" type="button" aria-label="Fechar">✕</button>
+                </div>
+                <ul id="listaCarrinho"></ul>
+                <div class="carrinho-rodape">
+                    <strong>Total: <span id="totalCarrinho">R$ 0,00</span></strong>
+                    <button class="btn-add" id="btnFinalizar" type="button">Finalizar pedido</button>
+                </div>
+            </aside>
+        
+            <div class="toast" id="toast"></div>
+
+            <script src="../js/storedog.js"></script>
 
                         <footer class="footer">
                             <p>&copy; 2026 Todos os direitos reservados. Petshop.</p>

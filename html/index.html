@@ -55,70 +55,103 @@
         </section>
 
         <section class="produtos" id="produtos" aria-label="Produtos">
-
-  
-            <article class="card" data-id="1" data-categoria="cachorro" data-preco="189.99">
+            <!-- RAÇÕES -->
+            <article class="card" data-id="1" data-categoria="racao" data-preco="189.99">
                 <img src="../img/Golden Formula Cães Adultos.png" alt="Ração Golden Formula Cães Adultos 15kg">
                 <h2>Golden Formula Cães Adultos 15kg</h2>
                 <p class="preco">R$ 189,99</p>
                 <button class="btn" type="button">Comprar</button>
             </article>
-
-            <article class="card" data-id="2" data-categoria="cachorro" data-preco="135.00">
+            
+            <article class="card" data-id="2" data-categoria="racao" data-preco="135.00">
                 <img src="../img/Pedigree Adulto Carne e Vegetais.png" alt="Ração Pedigree Adulto Carne e Vegetais 7kg">
                 <h2>Pedigree Adulto Carne e Vegetais 7kg</h2>
                 <p class="preco">R$ 135,00</p>
                 <button class="btn" type="button">Comprar</button>
             </article>
-
-            <article class="card" data-id="3" data-categoria="cachorro" data-preco="280.00">
+            
+            <article class="card" data-id="3" data-categoria="racao" data-preco="280.00">
                 <img src="../img/Premier Pet Fórmula Cães Adultos.png" alt="Ração Premier Pet Fórmula Cães Adultos 15kg">
                 <h2>Premier Pet Fórmula Cães Adultos 15kg</h2>
                 <p class="preco">R$ 280,00</p>
                 <button class="btn" type="button">Comprar</button>
             </article>
-
-            <article class="card" data-id="4" data-categoria="cachorro" data-preco="430.00">
+            
+            <article class="card" data-id="4" data-categoria="racao" data-preco="430.00">
                 <img src="../img/racao-royal-canin-medium-adult-7-mais-caes-adultos-1-removebg-preview.png" alt="Ração Royal Canin Medium Adult 12kg">
                 <h2>Ração Royal Canin Medium Adult 12kg</h2>
                 <p class="preco">R$ 430,00</p>
                 <button class="btn" type="button">Comprar</button>
             </article>
-
-
-            <article class="card" data-id="5" data-categoria="gato" data-preco="170.00">
+            
+            
+            <article class="card" data-id="1" data-categoria="racao" data-preco="170.00" data-desc="Ração premium da linha Golden para manter a saúde do seu felino castrado em dia." data-specs="Peso: 10kg&#10;Categoria: Ração">
                 <img src="../img/Golden Gatos.png" alt="Ração Golden Gatos Castrados 10kg">
                 <h2>Golden Gatos Castrados 10kg</h2>
                 <p class="preco">R$ 170,00</p>
                 <button class="btn" type="button">Comprar</button>
             </article>
-
-            <article class="card" data-id="6" data-categoria="gato" data-preco="210.00">
+            
+            <article class="card" data-id="2" data-categoria="racao" data-preco="210.00">
                 <img src="../img/Premier Pet Gatos Castrados.png" alt="Ração Premier Pet Gatos Castrados 7,5kg">
                 <h2>Premier Pet Gatos Castrados 7,5kg</h2>
                 <p class="preco">R$ 210,00</p>
                 <button class="btn" type="button">Comprar</button>
             </article>
-
-            <article class="card" data-id="7" data-categoria="gato" data-preco="420.00">
+            
+            <article class="card" data-id="3" data-categoria="racao" data-preco="420.00">
                 <img src="../img/Royal Canin Feline Fit 32.png" alt="Ração Royal Canin Feline Fit 32 7,5kg">
                 <h2>Royal Canin Feline Fit 32 7,5kg</h2>
                 <p class="preco">R$ 420,00</p>
                 <button class="btn" type="button">Comprar</button>
             </article>
-
-            <article class="card" data-id="8" data-categoria="gato" data-preco="185.00">
+            
+            <article class="card" data-id="4" data-categoria="racao" data-preco="185.00">
                 <img src="../img/Whiskas Adultos.png" alt="Ração Whiskas Adultos 10,1kg">
                 <h2>Whiskas Adultos 10,1kg</h2>
                 <p class="preco">R$ 185,00</p>
                 <button class="btn" type="button">Comprar</button>
             </article>
-        </section>
 
-        <div id="modal-passagem" class="modal-overlay">
-            <div class="modal-box">
-              <button id="fechar-modal" class="modal-close">✕</button>
-              <img id="modal-img" class="modal-img" src="" alt="">
+            <p id="semResultado" hidden>Nenhum produto encontrado.</p>
+        
+            <!-- MODAL DO PRODUTO -->
+            <div class="overlay" id="modalProduto" hidden>
+                <div class="produto-modal" role="dialog" aria-modal="true">
+                    <button class="fechar" id="fecharModal" type="button" aria-label="Fechar">✕</button>
+                    <div class="modal-img"><img id="modalImg" src="" alt=""></div>
+                    <div class="modal-info">
+                        <h2 id="modalNome"></h2>
+                        <p class="modal-preco" id="modalPreco"></p>
+                        <h4>Descrição</h4>
+                        <p id="modalDesc"></p>
+                        <h4>Detalhes</h4>
+                        <pre class="modal-specs" id="modalSpecs"></pre>
+                        <div class="qtd">
+                            <button id="menos" type="button">−</button>
+                            <span id="qtdModal">1</span>
+                            <button id="mais" type="button">+</button>
+                        </div>
+                        <button class="btn-add" id="btnAdicionar" type="button">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- CARRINHO -->
+            <div class="overlay" id="overlayCarrinho" hidden></div>
+            <aside class="carrinho" id="carrinho" aria-hidden="true">
+                <div class="carrinho-topo">
+                    <h3>Seu carrinho</h3>
+                    <button class="fechar" id="fecharCarrinho" type="button" aria-label="Fechar">✕</button>
+                </div>
+                <ul id="listaCarrinho"></ul>
+                <div class="carrinho-rodape">
+                    <strong>Total: <span id="totalCarrinho">R$ 0,00</span></strong>
+                    <button class="btn-add" id="btnFinalizar" type="button">Finalizar pedido</button>
+                </div>
+            </aside>
+        
+            <div class="toast" id="toast"></div>
           
               
         <script src="../js/script.js"></script>

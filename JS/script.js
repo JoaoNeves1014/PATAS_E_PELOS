@@ -1,65 +1,186 @@
-const campoBusca = document.getElementById('campo-busca');
-const formBusca = document.getElementById('form-busca');
-const btnCarrinho = document.getElementById('btn-carrinho');
 const cards = document.querySelectorAll('.card');
+const modal = document.getElementById('modalProduto');
+const carrinhoEl = document.getElementById('carrinho');
+const overlayCarrinho = document.getElementById('overlayCarrinho');
+const listaCarrinho = document.getElementById('listaCarrinho');
+const toast = document.getElementById('toast');
 
-// Lista de produtos do carrinho
+let produtoAtual = null;
+let quantidade = 1;
 let carrinho = [];
 
-
-/* ---------- BUSCA ---------- */
-
-function buscar() {
-    const termo = campoBusca.value.toLowerCase();
-
-    cards.forEach(function (card) {
-        const nome = card.querySelector('h2').textContent.toLowerCase();
-        const categoria = card.dataset.categoria;
-
-        // mostra o card se o nome ou a categoria tiver o texto digitado
-        card.hidden = !(nome.includes(termo) || categoria.includes(termo));
-    });
+// Carrega o carrinho salvo (se existir)
+try {
+  carrinho = JSON.parse(localStorage.getItem('carrinhoFelinos')) || [];
+} catch (e) {
+  carrinho = [];
 }
 
-campoBusca.addEventListener('input', buscar);
+// ===== FUNÇÕES AUXILIARES =====
+function formatarPreco(valor) {
+  return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
 
-formBusca.addEventListener('submit', function (evento) {
-    evento.preventDefault(); // não deixa a página recarregar
-    buscar();
+function mostrarAviso(texto) {
+  toast.textContent = texto;
+  toast.classList.add('mostrar');
+  setTimeout(() => toast.classList.remove('mostrar'), 2000);
+}
+
+function salvarCarrinho() {
+  localStorage.setItem('carrinhoFelinos', JSON.stringify(carrinho));
+}
+
+// ===== MODAL DO PRODUTO =====
+function abrirModal(card) {
+  const d = card.dataset;
+  const nome = card.querySelector('h2').textContent;
+  const img = card.querySelector('img').getAttribute('src');
+
+  produtoAtual = {
+    id: d.id,
+    nome: nome,
+    preco: parseFloat(d.preco),
+    img: img
+  };
+  quantidade = 1;
+
+  document.getElementById('modalImg').src = img;
+  document.getElementById('modalImg').alt = nome;
+  document.getElementById('modalNome').textContent = nome;
+  document.getElementById('modalPreco').textContent = formatarPreco(produtoAtual.preco);
+  document.getElementById('modalDesc').textContent = d.desc || 'Produto de qualidade para o seu pet.';
+  document.getElementById('modalSpecs').textContent = d.specs || ('Categoria: ' + d.categoria);
+  document.getElementById('qtdModal').textContent = quantidade;
+
+  modal.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharModal() {
+  modal.hidden = true;
+  document.body.style.overflow = '';
+}
+
+cards.forEach(card => {
+  card.querySelector('.btn').addEventListener('click', () => abrirModal(card));
 });
 
+document.getElementById('fecharModal').addEventListener('click', fecharModal);
+modal.addEventListener('click', e => {
+  if (e.target === modal) fecharModal(); // clicou fora da caixa
+});
 
-/* ---------- CARRINHO ---------- */
+document.getElementById('mais').addEventListener('click', () => {
+  quantidade++;
+  document.getElementById('qtdModal').textContent = quantidade;
+});
+document.getElementById('menos').addEventListener('click', () => {
+  if (quantidade > 1) quantidade--;
+  document.getElementById('qtdModal').textContent = quantidade;
+});
 
-// Cada botão "Comprar" adiciona o produto no carrinho
-cards.forEach(function (card) {
-    const botao = card.querySelector('.btn');
+document.getElementById('btnAdicionar').addEventListener('click', () => {
+  const existente = carrinho.find(item => item.id === produtoAtual.id);
+  if (existente) {
+    existente.qtd += quantidade;
+  } else {
+    carrinho.push({ ...produtoAtual, qtd: quantidade });
+  }
+  salvarCarrinho();
+  atualizarCarrinho();
+  fecharModal();
+  mostrarAviso('Produto adicionado ao carrinho!');
+});
 
-    botao.addEventListener('click', function () {
-        const produto = {
-            nome: card.querySelector('h2').textContent,
-            preco: Number(card.dataset.preco)
-        };
+// ===== CARRINHO =====
+function atualizarCarrinho() {
+  listaCarrinho.innerHTML = '';
+  let total = 0;
+  let totalItens = 0;
 
-        carrinho.push(produto);
-        btnCarrinho.textContent = 'Carrinho (' + carrinho.length + ')';
+  if (carrinho.length === 0) {
+    listaCarrinho.innerHTML = '<li class="carrinho-vazio">Seu carrinho está vazio.</li>';
+  }
+
+  carrinho.forEach((item, i) => {
+    total += item.preco * item.qtd;
+    totalItens += item.qtd;
+
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <img src="${item.img}" alt="">
+      <div class="item-info">
+        <strong>${item.nome}</strong><br>
+        ${item.qtd} x ${formatarPreco(item.preco)}
+      </div>
+      <button class="remover" aria-label="Remover item">🗑</button>
+    `;
+    li.querySelector('.remover').addEventListener('click', () => {
+      carrinho.splice(i, 1);
+      salvarCarrinho();
+      atualizarCarrinho();
     });
+    listaCarrinho.appendChild(li);
+  });
+
+  document.getElementById('totalCarrinho').textContent = formatarPreco(total);
+  document.getElementById('contadorCarrinho').textContent = totalItens;
+}
+
+function abrirCarrinho() {
+  carrinhoEl.classList.add('aberto');
+  carrinhoEl.setAttribute('aria-hidden', 'false');
+  overlayCarrinho.hidden = false;
+}
+
+function fecharCarrinho() {
+  carrinhoEl.classList.remove('aberto');
+  carrinhoEl.setAttribute('aria-hidden', 'true');
+  overlayCarrinho.hidden = true;
+}
+
+document.getElementById('btnCarrinho').addEventListener('click', abrirCarrinho);
+document.getElementById('fecharCarrinho').addEventListener('click', fecharCarrinho);
+overlayCarrinho.addEventListener('click', fecharCarrinho);
+
+document.getElementById('btnFinalizar').addEventListener('click', () => {
+  if (carrinho.length === 0) {
+    mostrarAviso('Adicione um produto primeiro.');
+    return;
+  }
+  mostrarAviso('Pedido enviado! (aqui você liga com o pagamento depois)');
+  carrinho = [];
+  salvarCarrinho();
+  atualizarCarrinho();
+  fecharCarrinho();
 });
 
-// Clicar no botão do carrinho mostra os itens e o total
-btnCarrinho.addEventListener('click', function () {
-    if (carrinho.length === 0) {
-        alert('Seu carrinho está vazio.');
-        return;
-    }
+// ===== BUSCA =====
+function buscar() {
+  const termo = document.getElementById('busca').value.toLowerCase().trim();
+  let achou = false;
 
-    let texto = '';
-    let total = 0;
+  cards.forEach(card => {
+    const nome = card.querySelector('h2').textContent.toLowerCase();
+    const combina = nome.includes(termo);
+    card.style.display = combina ? '' : 'none';
+    if (combina) achou = true;
+  });
 
-    carrinho.forEach(function (item) {
-        texto += item.nome + ' - R$ ' + item.preco.toFixed(2).replace('.', ',') + '\n';
-        total += item.preco;
-    });
+  document.getElementById('semResultado').hidden = achou;
+}
 
-    alert(texto + '\nTotal: R$ ' + total.toFixed(2).replace('.', ','));
+document.getElementById('btnBuscar').addEventListener('click', buscar);
+document.getElementById('busca').addEventListener('input', buscar);
+
+// ===== TECLA ESC FECHA TUDO =====
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    fecharModal();
+    fecharCarrinho();
+  }
 });
+
+// Atualiza o carrinho ao abrir a página
+atualizarCarrinho();
