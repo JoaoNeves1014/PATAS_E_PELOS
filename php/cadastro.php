@@ -3,7 +3,7 @@
 $servidor = "sql213.infinityfree.com";
 $usuario = "if0_43466199";
 $senha_bd = "C14LbFg7RKF";
-$banco = "";
+$banco = "if0_43466199_patasepelos_cadastro";
 
 $conexao = mysqli_connect($servidor, $usuario, $senha_bd, $banco);
 
