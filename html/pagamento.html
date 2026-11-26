@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento | Patas &amp; Pelos</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pagamento.css">
+</head>
+<body>
+
+    <header class="topo">
+        <div class="topo-linha topo-pagamento">
+            <div class="logo">
+                <a href="../html/index.html">
+                    <img src="../img/logo.png" alt="Patas &amp; Pelos">
+                </a>
+            </div>
+            <div class="auth-buttons">
+                <a href="../html/index.html">← Voltar à loja</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="pgto-wrap" id="areaCheckout">
+            <div class="pgto-box">
+                <h2>Dados de Entrega e Pagamento</h2>
+                <form id="formPagamento">
+                    <div class="pgto-campo">
+                        <label for="nome">Nome completo *</label>
+                        <input type="text" id="nome" required placeholder="O teu nome">
+                    </div>
+
+                    <div class="pgto-campo">
+                        <label for="endereco">Morada de entrega *</label>
+                        <input type="text" id="endereco" required placeholder="Rua, número, localidade">
+                    </div>
+
+                    <div class="pgto-campo">
+                        <label for="metodo">Método de pagamento</label>
+                        <select id="metodo">
+                            <option value="MB WAY / PIX">MB WAY / PIX</option>
+                            <option value="Cartão de Crédito">Cartão de Crédito</option>
+                            <option value="Referência / Boleto">Referência / Boleto</option>
+                        </select>
+                    </div>
+
+                    <div id="extraCartao" class="extra-cartao">
+                        <div class="pgto-campo">
+                            <label for="numCartao">Número do cartão</label>
+                            <input type="text" id="numCartao" placeholder="0000 0000 0000 0000" maxlength="19">
+                        </div>
+                        <div class="cartao-grid">
+                            <div class="pgto-campo sem-margem">
+                                <label for="valCartao">Validade</label>
+                                <input type="text" id="valCartao" placeholder="MM/AA" maxlength="5">
+                            </div>
+                            <div class="pgto-campo sem-margem">
+                                <label for="cvvCartao">CVV</label>
+                                <input type="text" id="cvvCartao" placeholder="123" maxlength="3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn" id="btnFinalizar">Finalizar compra</button>
+                </form>
+            </div>
+
+            <div class="pgto-box resumo-box">
+                <h2>Resumo do Pedido</h2>
+                <div id="listaResumo"></div>
+                <hr class="divisor-resumo">
+                <div class="pgto-linha">
+                    <span>Subtotal:</span>
+                    <span id="subtotalTxt">R$ 0,00</span>
+                </div>
+                <div class="pgto-linha">
+                    <span>Envio:</span>
+                    <span id="freteTxt">R$ 0,00</span>
+                </div>
+                <div class="pgto-linha pgto-total">
+                    <span>Total:</span>
+                    <span id="totalTxt">R$ 0,00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="pgto-box confirmacao-box" id="areaConfirmacao">
+            <h1 class="titulo-confirmacao">Pedido Confirmado!</h1>
+            <p id="msgPedido" class="msg-pedido"></p>
+            <p id="msgDetalhes" class="msg-detalhes"></p>
+            <a href="../html/index.html" class="btn btn-voltar">Voltar à loja</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Todos os direitos reservados. Patas &amp; Pelos Petshop.</p>
+    </footer>
+
+    <script src="../js/pagamento.js"></script>
+</body>
+</html>

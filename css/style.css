@@ -1,4 +1,4 @@
-
+/* VARIÁVEIS DE CORES E TAMANHO */
 :root {
     --cor-principal: #4cbbbb;
     --cor-escura: #067979;
@@ -7,7 +7,7 @@
     --largura-max: 1400px;
 }
 
-
+/* RESET BÁSICO */
 * {
     margin: 0;
     padding: 0;
@@ -26,6 +26,7 @@ input:focus-visible {
     outline-offset: 2px;
 }
 
+/* CABEÇALHO E MENU */
 .topo {
     background-color: var(--cor-principal);
     padding-bottom: 8px;
@@ -53,7 +54,7 @@ input:focus-visible {
     border-radius: 8px;
 }
 
-
+/* BARRA DE BUSCA */
 .search-container {
     display: flex;
     align-items: center;
@@ -87,11 +88,12 @@ input:focus-visible {
     color: #ffffff;
 }
 
-
+/* BOTÕES DE LOGIN, CADASTRO E CARRINHO */
 .auth-buttons {
     justify-self: end;
     display: flex;
-    gap: 23px;
+    align-items: center;
+    gap: 18px;
 }
 
 .auth-buttons a {
@@ -109,7 +111,60 @@ input:focus-visible {
     text-shadow: 0 0 8px var(--cor-escura);
 }
 
+.btn-carrinho {
+    background-color: #ffffff;
+    color: var(--cor-escura);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
+.btn-carrinho:hover {
+    background-color: var(--cor-escura);
+    color: #ffffff;
+}
+
+.auth-guest,
+.auth-user {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.auth-guest[hidden],
+.auth-user[hidden] {
+    display: none;
+}
+
+.nome-usuario {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.btn-sair {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-sair:hover {
+    background: var(--cor-escura);
+    border-color: var(--cor-escura);
+}
+
+/* CATEGORIAS */
 .navlinks {
     list-style: none;
     display: flex;
@@ -125,16 +180,15 @@ input:focus-visible {
     text-decoration: none;
     color: #ffffff;
     font-size: 20px;
-    border-bottom: 3px solid transparent; /* evita o "pulo" no hover */
+    border-bottom: 3px solid transparent;
     transition: 0.2s;
 }
 
 .navlinks a:hover {
     color: var(--cor-escura);
-
 }
 
-
+/* BANNER */
 .banner {
     max-width: var(--largura-max);
     margin: 40px auto 0;
@@ -149,7 +203,7 @@ input:focus-visible {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-
+/* CARDS DE PRODUTOS */
 .produtos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -166,6 +220,10 @@ input:focus-visible {
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.card[hidden] {
+    display: none;
 }
 
 .card img {
@@ -210,41 +268,7 @@ input:focus-visible {
     transform: scale(0.96);
 }
 
-
-.footer {
-    background-color: var(--cor-principal);
-    color: #ffffff;
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
-}
-
-.card[hidden] {
-    display: none;
-}
-
-/* Botão do carrinho */
-.btn-carrinho {
-    padding: 8px 16px;
-    border: 0;
-    border-radius: 20px;
-    background-color: #ffffff;
-    color: #000000;
-    font-family: inherit;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-carrinho:hover {
-    background-color: var(--cor-escura);
-    color: #ffffff;
-}
-
-.auth-buttons {
-    align-items: center;
-}
-
+/* MODAL DO PRODUTO */
 .overlay {
     position: fixed;
     inset: 0;
@@ -254,11 +278,11 @@ input:focus-visible {
     justify-content: center;
     z-index: 50;
 }
- 
+
 .overlay[hidden] {
     display: none;
 }
- 
+
 .produto-modal {
     position: relative;
     background-color: #f1f0e0;
@@ -275,12 +299,12 @@ input:focus-visible {
     font-family: "Roboto", sans-serif;
     animation: abrirModal 0.2s ease-out;
 }
- 
+
 @keyframes abrirModal {
     from { transform: scale(0.95); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
- 
+
 .modal-img {
     background-color: #dad9d4;
     border-radius: 10px;
@@ -289,32 +313,32 @@ input:focus-visible {
     justify-content: center;
     padding: 16px;
 }
- 
+
 .modal-img img {
     max-width: 100%;
     max-height: 320px;
     object-fit: contain;
 }
- 
+
 .modal-info h2 {
     font-size: 22px;
     margin-bottom: 6px;
     padding-right: 30px;
 }
- 
+
 .modal-preco {
     color: #4cbbbb;
     font-size: 26px;
     font-weight: bold;
     margin-bottom: 14px;
 }
- 
+
 .modal-info h4 {
     color: #000000;
     margin: 14px 0 6px;
     font-size: 13px;
 }
- 
+
 .modal-specs {
     font-family: monospace;
     background-color: #e2dfdf;
@@ -323,14 +347,14 @@ input:focus-visible {
     font-size: 13px;
     white-space: pre-wrap;
 }
- 
+
 .qtd {
     display: flex;
     align-items: center;
     gap: 14px;
     margin: 18px 0 12px;
 }
- 
+
 .qtd button {
     width: 34px;
     height: 34px;
@@ -341,7 +365,7 @@ input:focus-visible {
     font-size: 18px;
     cursor: pointer;
 }
- 
+
 .btn-add {
     width: 100%;
     background-color: #4cbbbb;
@@ -354,22 +378,176 @@ input:focus-visible {
     cursor: pointer;
     transition: 0.3s;
 }
- 
+
 .btn-add:hover {
     background-color: #067979;
 }
- 
+
 .fechar {
     position: absolute;
     top: 14px;
     right: 16px;
     background: none;
     border: none;
-    color: #cccccc;
+    color: #666;
     font-size: 20px;
     cursor: pointer;
 }
 
+/* CARRINHO (SACOLA CENTRALIZADA) */
+.sacola-modal {
+    background-color: var(--cor-fundo);
+    width: min(540px, 92%);
+    max-height: 85vh;
+    border-radius: 18px;
+    border: 2px solid var(--cor-principal);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    animation: abrirModal 0.2s ease-out;
+}
+
+.sacola-cabecalho {
+    background-color: var(--cor-escura);
+    color: #ffffff;
+    padding: 16px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sacola-cabecalho h2 {
+    font-size: 19px;
+}
+
+.sacola-cabecalho .fechar {
+    position: static;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.sacola-itens {
+    padding: 18px 22px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item-sacola {
+    background-color: var(--cor-card);
+    border-radius: 12px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-left: 4px solid var(--cor-principal);
+}
+
+.item-sacola-esq {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.item-sacola img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 3px;
+    flex-shrink: 0;
+}
+
+.item-sacola-nome {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-sacola-preco {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--cor-escura);
+}
+
+.item-sacola-dir {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.item-sacola-dir button {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid var(--cor-principal);
+    background: #ffffff;
+    color: var(--cor-escura);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.item-sacola-dir .btn-lixeira {
+    width: auto;
+    border-radius: 6px;
+    padding: 0 8px;
+    border-color: #c0392b;
+    color: #c0392b;
+    font-size: 12px;
+}
+
+.sacola-rodape {
+    background-color: #ffffff;
+    padding: 16px 22px;
+    border-top: 1px solid #e0ddd7;
+}
+
+.sacola-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+/* AVISO (TOAST) */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: var(--cor-escura);
+    color: #ffffff;
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 100;
+}
+
+.toast.mostrar {
+    opacity: 1;
+}
+
+/* RODAPÉ */
+.footer {
+    background-color: var(--cor-principal);
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
+
+/* RESPONSIVO (CELULAR) */
 @media (max-width: 768px) {
     .topo-linha {
         grid-template-columns: 1fr;
@@ -438,7 +616,9 @@ input:focus-visible {
         font-size: 13px;
     }
 
-    
+    .produto-modal {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 420px) {

@@ -1,35 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Patas &amp; Pelos | Pet Shop Online</title>
+
+    <!-- Fonte e folha de estilo principal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/storedog.css">
 </head>
 <body>
+
+    <!-- CABEÇALHO, BUSCA, LOGIN E NAVEGAÇÃO -->
     <header class="topo">
         <div class="topo-linha">
 
+            <!-- Logo -->
             <div class="logo">
                 <a href="../html/index.html">
                     <img src="../img/logo.png" alt="Patas &amp; Pelos - Pet Shop Online">
                 </a>
             </div>
 
+            <!-- Barra de busca -->
             <form class="search-container" id="form-busca" role="search">
                 <input type="search" id="campo-busca" placeholder="Pesquisar..." aria-label="Pesquisar produtos">
                 <button type="submit" id="btn-buscar">Buscar</button>
             </form>
 
-       
+            <!-- Botão do carrinho e área de conta (login/cadastrar ou nome do usuário) -->
             <div class="auth-buttons">
-                <button type="button" id="btn-carrinho" class="btn-carrinho">Carrinho (0)</button>
-                <a href="../html/login.html" class="btn-login">Login</a>
-                <a href="../html/cadastro.html" class="btn-register">Cadastrar</a>
+                <button type="button" id="btn-carrinho" class="btn-carrinho">🛒 (0)</button>
+
+                <div class="auth-guest" id="areaGuest">
+                    <a href="../html/login.html" class="btn-login">Login</a>
+                    <a href="../html/cadastro.html" class="btn-register">Cadastrar</a>
+                </div>
+
+                <div class="auth-user" id="areaUsuario" hidden>
+                    <span class="nome-usuario" id="nomeUsuario"></span>
+                    <button type="button" class="btn-sair" id="btnSair">Sair</button>
+                </div>
             </div>
 
         </div>
 
+        <!-- Categorias -->
         <nav class="nav-categorias" aria-label="Categorias">
             <ul class="navlinks">
                 <li><a href="../html/index.html">Home</a></li>
@@ -44,29 +62,30 @@
 
     <main>
 
+        <!-- BANNER PRINCIPAL -->
         <section class="banner" id="banner">
             <img src="../img/BannerDog.jpg" alt="Kit Diversão &amp; Sabor: ração super premium com 30% off e brinquedos">
         </section>
 
-    
+        <!-- CARDS DE PRODUTOS -->
     <section class="produtos" id="produtos" aria-label="Produtos">
 
             <article class="card" data-id="1" data-categoria="racao" data-preco="189.99">
-                <img src="../img/Golden Formula Cães Adultos.png" alt="Ração Golden Formula Cães Adultos 15kg">
+                <img src="../img/Golden-Formula-Cães-Adultos.png" alt="Ração Golden Formula Cães Adultos 15kg">
                 <h2>Golden Formula Cães Adultos 15kg</h2>
                 <p class="preco">R$ 189,99</p>
                 <button class="btn" type="button">Comprar</button>
             </article>
             
             <article class="card" data-id="2" data-categoria="racao" data-preco="135.00">
-                <img src="../img/Pedigree Adulto Carne e Vegetais.png" alt="Ração Pedigree Adulto Carne e Vegetais 7kg">
+                <img src="../img/Pedigree-Adulto-Carne-e-Vegetais.png" alt="Ração Pedigree Adulto Carne e Vegetais 7kg">
                 <h2>Pedigree Adulto Carne e Vegetais 7kg</h2>
                 <p class="preco">R$ 135,00</p>
                 <button class="btn" type="button">Comprar</button>
             </article>
             
             <article class="card" data-id="3" data-categoria="racao" data-preco="280.00">
-                <img src="../img/Premier Pet Fórmula Cães Adultos.png" alt="Ração Premier Pet Fórmula Cães Adultos 15kg">
+                <img src="../img/Premier-Pet-Fórmula-Cães-Adultos.png" alt="Ração Premier Pet Fórmula Cães Adultos 15kg">
                 <h2>Premier Pet Fórmula Cães Adultos 15kg</h2>
                 <p class="preco">R$ 280,00</p>
                 <button class="btn" type="button">Comprar</button>
@@ -189,20 +208,30 @@
                     </div>
                 </div>
             </div>
-        
-            <!-- CARRINHO -->
-            <div class="overlay" id="overlayCarrinho" hidden></div>
-            <aside class="carrinho" id="carrinho" aria-hidden="true">
-                <div class="carrinho-topo">
-                    <h3>Seu carrinho</h3>
-                    <button class="fechar" id="fecharCarrinho" type="button" aria-label="Fechar">✕</button>
+            
+            
+            <!-- CARRINHO (SACOLA CENTRALIZADA) -->
+            <div class="overlay" id="overlayCarrinho" hidden>
+                <div class="sacola-modal" role="dialog" aria-modal="true">
+                    <div class="sacola-cabecalho">
+                        <h2>Sacola Patas &amp; Pelos</h2>
+                        <button class="fechar" id="fecharCarrinho" type="button" aria-label="Fechar sacola">✕</button>
+                    </div>
+
+                    <div class="sacola-itens" id="listaCarrinho"></div>
+
+                    <div class="sacola-rodape">
+                        <div class="sacola-total">
+                            <span>Subtotal</span>
+                            <strong id="totalCarrinho">R$ 0,00</strong>
+                        </div>
+
+                        <form action="../html/pagamento.html" method="GET" id="formFinalizar">
+                            <button type="submit" class="btn-add" id="btnIrPagamento">Ir para Pagamento</button>
+                        </form>
+                    </div>
                 </div>
-                <ul id="listaCarrinho"></ul>
-                <div class="carrinho-rodape">
-                    <strong>Total: <span id="totalCarrinho">R$ 0,00</span></strong>
-                    <button class="btn-add" id="btnFinalizar" type="button">Finalizar pedido</button>
-                </div>
-            </aside>
+            </div>
         
             <div class="toast" id="toast"></div>
 
